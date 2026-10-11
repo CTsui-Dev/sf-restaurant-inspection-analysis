@@ -7,14 +7,21 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 **How have restaurant inspection violation trends changed over time in San Francisco? Which violation types are increasing or decreasing?**
 
 ## 📁 Data Source
-- **Dataset:** San Francisco Restaurant Inspection Results (DataSF)
-- **Source:** https://data.sfgov.org/
+- **Dataset:** [San Francisco Restaurant Inspection Results (DataSF)]([url](https://data.sf.gov/Health-and-Social-Services/Health-Inspection-Scores-2016-2019-/pyih-qa8i/about_data))
+- **Publisher:** San Francisco Department of Public Health via DataSF
+- **Geographic Scope:** San Francisco, California
 
 ## 🔍 Methodology
 
 ### Data Collection
-- Downloaded SF Open Data restaurant inspection dataset
-- Records span 2016 to 2019
+- Downloaded SF Open Data restaurant inspection dataset from DataSF.
+- Imported the CSV file into SQLite for querying and analysis.
+- Examined inspection dates, inspection types, and violation descriptions to understand the structure and coverage of the data.
+
+### Data Quality and Coverage
+- Exploratory analysis revealed uneven monthly coverage in the imported dataset: 2016 records appear only from October through December, while 2019 inspection counts drop sharply beginning in October.
+- Because these differences can distort comparisons of raw annual violation counts, the primary trend analysis compares **January through September** across **2017, 2018, and 2019**.
+- October-December data will be omitted from data analysis for accuracy.
 
 ### Analysis Approach
 1. **Temporal Aggregation:** Grouped violations by year and violation type
@@ -29,8 +36,9 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 - **GitHub** — Version control and project documentation
 
 ## 📈 Key Findings
+*In progress — findings will be finalized after the comparable-period analysis.*
 
-- **Finding 1:** [Violation type] increased by X% from 2016 to 2019 (in progress!!)
+- **Finding 1:** [Violation type] increased by X% from 2016 to 2019
 - **Finding 2:** [Neighborhood/category] shows [trend description]
 - **Finding 3:** [Actionable insight for stakeholders]
 
