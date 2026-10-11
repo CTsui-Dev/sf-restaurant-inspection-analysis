@@ -8,7 +8,6 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 
 ## 📁 Data Source
 - **Dataset:** San Francisco Restaurant Inspection Results (DataSF)
-- **Records:** [tba]
 - **Source:** https://data.sfgov.org/
 
 ## 🔍 Methodology
@@ -25,7 +24,9 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 
 ### Tools Used
 - **SQL** — Data extraction, aggregation, and trend analysis
-- **Power BI** — Visualization of trends and patterns
+- **SQLite** — Database for storing and querying restaurant inspection data
+- **DBeaver** — SQL development environment for running queries and inspecting results
+- **Google Docs** — Report writing and project documentation
 - **GitHub** — Version control and project documentation
 
 ## 📈 Key Findings
