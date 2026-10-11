@@ -19,8 +19,7 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 ### Analysis Approach
 1. **Temporal Aggregation:** Grouped violations by year and violation type
 2. **Trend Calculation:** Calculated year-over-year changes and growth rates
-3. **Categorization:** Classified violations by risk level (critical, major, minor)
-4. **Pattern Identification:** Identified top increasing/decreasing violation types
+3. **Pattern Identification:** Identified top increasing/decreasing violation types
 
 ### Tools Used
 - **SQL** — Data extraction, aggregation, and trend analysis
@@ -31,21 +30,17 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 
 ## 📈 Key Findings
 
-- **Finding 1:** [Violation type] increased by X% from 2016 to 2019
+- **Finding 1:** [Violation type] increased by X% from 2016 to 2019 (in progress!!)
 - **Finding 2:** [Neighborhood/category] shows [trend description]
 - **Finding 3:** [Actionable insight for stakeholders]
 
 **Impact:** These trends suggest [business implication for regulators/restaurants]
 
-## 📂 Repository Files
-[tba]
-
 ## 🚀 How to Use
 
 1. Download the dataset from this link: https://data.sf.gov/Health-and-Social-Services/Health-Inspection-Scores-2016-2019-/pyih-qa8i/about_data/
-2. Run the SQL queries in `queries.sql` against your database
-3. Review findings in `analysis_report.md`
-4. Open the Power BI dashboard for interactive exploration
+2. Run the SQL queries in `queries.sql` against your database (author recommends SQLite)
+3. Review findings in `analysis_report.md` [not created yet]
 
 ## 💡 Key Takeaways
 
