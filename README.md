@@ -7,7 +7,7 @@ Analyzing year-over-year trends in San Francisco restaurant health violations to
 **How have restaurant inspection violation trends changed over time in San Francisco? Which violation types are increasing or decreasing?**
 
 ## 📁 Data Source
-- **Dataset:** [San Francisco Restaurant Inspection Results (DataSF)]([url](https://data.sf.gov/Health-and-Social-Services/Health-Inspection-Scores-2016-2019-/pyih-qa8i/about_data))
+- **Dataset:** [Health Inspection Scores (2016–2019)](https://data.sf.gov/d/pyih-qa8i)
 - **Publisher:** San Francisco Department of Public Health via DataSF
 - **Geographic Scope:** San Francisco, California
 
