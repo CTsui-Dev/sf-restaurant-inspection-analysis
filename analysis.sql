@@ -26,20 +26,6 @@ SELECT
 FROM health_inspections;
 /* Inspection dates are stored as TEXT in the format YYYY Mon DD HH:MM:SS AM/PM. */
 
--- Counts how often each violation description appears in each year.
-SELECT
-    substr(inspection_date, 1, 4) AS year,
-    violation_description,
-    COUNT(*) AS total_violations
-FROM health_inspections
-WHERE violation_description IS NOT NULL
-  AND TRIM(violation_description) <> ''
-GROUP BY substr(inspection_date, 1, 4), violation_description
-ORDER BY year, total_violations DESC;
-/*Note: A higher count doesn't necessarily mean a violation became more common: there might have been more inspections that year.
-It is time to compare each violation type across years and identify which increased or decreased. */
-
--- Compare violation trends from 2016 to 2019
 WITH violation_by_year AS (
     -- Count occurrences of each violation description per year
     SELECT
@@ -71,11 +57,9 @@ SELECT
     count_2017,
     count_2018,
     count_2019,
-
-    -- Calculate the absolute change in recorded counts
+    -- Overall absolute change from 2016 to 2019
     count_2019 - count_2016 AS count_change,
-
-    -- Calculate percentage change when a 2016 baseline exists
+    -- Overall percentage change from 2016 to 2019
     CASE
         WHEN count_2016 > 0 THEN
             ROUND(
@@ -83,8 +67,33 @@ SELECT
                 2
             )
     END AS percent_change,
-
-    -- Classify the trend between the first and last years
+    -- Year-over-year absolute changes
+    count_2017 - count_2016 AS change_2016_2017,
+    count_2018 - count_2017 AS change_2017_2018,
+    count_2019 - count_2018 AS change_2018_2019,
+    -- Year-over-year percentage changes
+    CASE
+        WHEN count_2016 > 0 THEN
+            ROUND(
+                (count_2017 - count_2016) * 100.0 / count_2016,
+                2
+            )
+    END AS pct_change_2016_2017,
+    CASE
+        WHEN count_2017 > 0 THEN
+            ROUND(
+                (count_2018 - count_2017) * 100.0 / count_2017,
+                2
+            )
+    END AS pct_change_2017_2018,
+    CASE
+        WHEN count_2018 > 0 THEN
+            ROUND(
+                (count_2019 - count_2018) * 100.0 / count_2018,
+                2
+            )
+    END AS pct_change_2018_2019,
+    -- Classify the overall trend between 2016 and 2019
     CASE
         WHEN count_2016 = 0 AND count_2019 > 0
             THEN 'No 2016 baseline'
@@ -94,10 +103,8 @@ SELECT
             THEN 'Decreased'
         ELSE 'No change'
     END AS trend
-
 FROM violation_trends
-
--- Show larger percentage increases first; put zero-baseline types last
+-- Show categories with a 2016 baseline first, ordered by percentage change
 ORDER BY
     CASE WHEN count_2016 = 0 THEN 1 ELSE 0 END,
     percent_change DESC;
